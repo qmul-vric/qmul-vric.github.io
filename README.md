@@ -1,2 +1,3 @@
-# qmul-vric.github.io
-qmul-vric.github.io
+# Vehicle Re-Identification in Context
+
+Multi resolution Vehicle Re-Identification Dataset based on UA-Detrac.

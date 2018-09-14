@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0055)https://qmul-survface.github.io/QMUL-SurvFace/index.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>QMUL-SurvFace</title>
+      <meta name="description" content="To facilitate more studies on developing face recognition models that are effective and robust 
+         for low-resolution surveillance facial images, we introduce a new Surveillance Face Recognition Challenge, 
+         which we call the QMUL-SurvFace benchmark. 
+         This new benchmark is the largest and more importantly the only true surveillance face recognition benchmark 
+         to our best knowledge, where low-resolution images are not synthesised by artificial down-sampling 
+         of native high-resolution images. This challenge contains 463,507 face images of 15,573 distinct identities 
+         captured in real-world uncooperative surveillance scenes over wide space and time. 
+         Face recognition is generally more difficult in an open-set setting which is typical for surveillance scenarios, 
+         owing to a large number of non-target people (distractors) appearing open spaced scenes.">
+      <meta name="keywords" content="QMUL SurvFace; 
+                                     QMUL Surveillance Face Recognition Challenge; QMUL Surveillance Face Challenge;
+                                     QMUL Surveillance Face Recognition Benchmark; QMUL Surveillance Face Benchmark;
+                                     face recognition; surveillance face recognition; face identification; face verification; 
+                                     open-set recognition; closed-set recognition; 
+                                     native low-resolution; genuine low-resolution;
+                                     true low-resolution; false low-resolution;
+                                     artificial down-sampling; artificial sub-sampling; artificial low-resolution;
+                                     very low-resolution; extreme low-resolution;
+                                     low quality; low-quality; poor quality; poor-quality;
+                                     super-resolution; high scale super-resolution;
+                                     surveillance face; native face; poor quality faces; 
+                                     large scale face search; large scale face matching; cross-camera matching;
+                                     benchmark; computer vision;">
+      <!-- Fonts and stuff -->
+      <link href="./QMUL-SurvFace_files/project.css" media="screen" rel="stylesheet" type="text/css">
+      <link href="./QMUL-SurvFace_files/iconize.css" rel="stylesheet" type="text/css" media="screen">
+      <link href="./images/new_icon.png" rel="shortcut icon">
+      <script type="text/javascript" async="" src="./QMUL-SurvFace_files/ga.js"></script>
+   </head>
+   <body>
+      <div id="content">
+         <div id="content-inner">
+            <div class="section head">
+               <p>
+               <h1 id="surveillance-face-recognition-challenge">QMUL-SurvFace: Surveillance Face Recognition Challenge</h1>
+               </p>
+               <div class="affiliations">
+                  <p><a href="http://www.eecs.qmul.ac.uk/~zc302/">Zhiyi Cheng</a> &nbsp; &nbsp; &nbsp; &nbsp;
+                     <a href="http://www.eecs.qmul.ac.uk/~xiatian/">Xiatian Zhu</a> &nbsp; &nbsp; &nbsp; &nbsp;
+                     <a href="http://www.eecs.qmul.ac.uk/~sgg/">Shaogang Gong</a>
+                  <p><a href="http://vision.eecs.qmul.ac.uk/">Computer Vision Group,  </a >
+                     <a href="http://www.eecs.qmul.ac.uk/">School of Electronic Engineering and Computer Science,  </a >
+                     <a href="http://www.qmul.ac.uk/">Queen Mary University of London</a >
+               </div>
+               <ul id="tabs">
+                  <li><a href="https://qmul-survface.github.io/index.html" name="#tab1">Home</a></li>
+                  <li><a href="https://qmul-survface.github.io/protocols.html" name="#tab2" id="current">Protocols</a></li>
+                  <li><a href="https://qmul-survface.github.io/benchmark.html" name="#tab3">Leaderboard</a></li>
+               </ul>
+            </div>
+            <h3 id="Benchmark">Data Partition</h3>
+            <p>
+               The same data partition is used for both (I) Face Identification and (II) Face Verification
+               challenges. Specifically,
+               the 10,638 multi-shot identities (IDs) with 2 or more face images were divided randomly into
+               two halves: one half (5,319) as the training data, the
+               other half (5,319) as the test data. The remaining 4,935 single-shot
+               IDs (totally 10,254) were used for model test. 
+               The data partition statistics
+               are summarsied in the Table below.
+            </p>
+            <table align="center" width="70%" style="margin: 0px auto;" class="justify" cellpadding="0" cellspacing="0">
+               <thead align="center">
+                  <tr>
+                     <th>Split</th>
+                     <th>All</th>
+                     <th>Training Set</th>
+                     <th>Testing Set</th>
+                  </tr>
+               </thead>
+               <tbody align="center">
+                  <tr>
+                     <td><strong>IDs</strong></td>
+                     <td>15,573</td>
+                     <td>5,319</td>
+                     <td>10,254</td>
+                  </tr>
+                  <tr>
+                     <td><strong>Images</strong></td>
+                     <td>463,507</td>
+                     <td>220,890</td>
+                     <td>242,617</td>
+                  </tr>
+               </tbody>
+            </table>
+            <br>
+            <!-- ////////////////////////////////////////////////////////////// -->
+            <h3 id="identification">(I) Face Identification</h3>
+            <p>In this challenge, an <strong>open-set</strong> face recognition protocol is adopted based on the consideration that
+               in realistic surveillance applications, most faces captured by CCTV cameras 
+               are of non-target persons and therefore should be detected as non-interest.
+               Specifically, a watch
+               list identification scenario is defined by creating
+               the probe and gallery sets as below: (1) 3,000 out of the 5,319
+               multi-shot test IDs were randomly selected. For each selected ID,
+               half face images went into
+               the gallery set, i.e. the watch list. (2) All the remaining
+               images of 5,319 multi-shot IDs and all face images of 4,935 single-shot IDs were then used to
+               form the probe set.
+               In the open-set evaluation,
+               two error types are considered.
+            </p>
+            <p>
+               The first type is <em>false alarm</em> – the system mistakenly
+               recognises a non-target person as some target people in the gallery.
+               This is quantified by the False Positive Identification
+               Rate (FPIR):
+            </p>
+            <p><img style="width: 130px;" src="./images/fpir.png"></p>
+            <p>which measures the proportion of nonmate searches <img style="width: 30px;" src="./images/Nnmm.png"/>
+               (i.e. no mate faces in the gallery) that produce
+               one or more gallery matching candidates at or above a threshold
+               t (i.e. false alarm), among a total of <img style="width: 30px;" src="./images/Nnm.png"/> nonmate
+               searches attempted.
+            </p>
+            <p>The second type of error is <em>missing</em>
+               – the system mistakenly
+               declines the ID of interest.
+               This is quantified
+               by the False Negative Identification Rate (FNIR):
+            </p>
+            <p><img style="width: 150px;" src="./images/fnir.png"></p>
+            <p>which is the proportion of mate searches <img style="width: 25px;" src="./images/Nmnm.png"/> 
+               (i.e. with mate faces present in the gallery) with enrolled gallery mate(s)
+               found outside top r ranks or matching similarity score
+               below the threshold t, among <img style="width: 20px;" src="./images/Nm.png"/> 
+               mate searches.
+            </p>
+            <p>
+               A more intuitive measure may be the
+               <em>hit rate</em> or True Positive Identification Rate (TPIR):
+            </p>
+            <p><img style="width: 200px;" src="./images/tpir.png"></p>
+            <p>The TPIR@FPIR measurements are adopted as the open-set face identification performance metrics. 
+            </p>
+            <p>By varying the threashold t, TPIR@FPIR can be used to generate an ROC curve and the Area Under the Curve (AUC)
+               can be then computed to measure an overall model performance.
+            </p>
+            <br>
+            <!-- ////////////////////////////////////////////////////////////// -->
+            <h3 id="verification">(II) Face Verification</h3>
+            <p>This challenge verifies whether a pair of face images describe the same ID or not.
+               Similar to other existing benchmarks like LFW, the sets of <em>matched</em> 
+               and <em>unmatched</em> pairs were defined for algorithm performance evaluation.
+               Specifically, for each of 5,319 test IDs, a matched pair and an unmatched pair
+               were randomly generated. To measure the performance of testing algorithms on these 
+               matched and unmatched face image pairs, 
+               two types of error are considered.
+            </p>
+            <p>
+               The first one is <em>false accept</em> – the system wrongly claims a distractor as a target gallery ID.
+               This is quatified by the False Accept Rate (FAR) which measures the fraction of unmatched pairs with the corresponding score s above a threshold t:
+            </p>
+            <p><img style="width: 250px;" src="./images/far.png"/></p>
+            <p>
+               where <img style="width: 15px;" src="./images/u.png"/> denotes the set of unmatched face image pairs. 
+            </p>
+            <p> 
+               The second one is <em>false reject</em> – the system mistakenly
+               declines the person of interest. This is quantified by 
+               the False Rejection Rate (FRR) which measures the
+               fraction of matched pairs with matching score s below a threshold t:
+            </p>
+            <p><img style="width: 250px;" src="./images/frr.png"/></p>
+            <p>where <img style="width: 17px;" src="./images/m.png"/> is the set of matched face image pairs.</p>
+            <p>   
+               In the same spirit of TPIR,
+               the True Accept Rate (TAR) can be further defined:
+            </p>
+            <p><img style="width: 160px;" src="./images/tar.png"/></p>
+            <p>
+               The TAR@FAR measurements are utilised for face verification evaluation.
+               By varying the threashold t, TAR@FAR can similarly generate an ROC curve and enable to compute the AUC
+               overall model performance.
+            </p>
+         </div>
+      </div>
+   </body>
+</html>
